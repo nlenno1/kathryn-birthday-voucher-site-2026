@@ -1,0 +1,186 @@
+:root {
+  --bg: #fdf6f9;
+  --primary: #a855f7;
+  --text: #2d2d2d;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.hidden {
+   display: none !important;
+}
+
+/* Container */
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+h1 { font-size: 2rem; margin-bottom: 10px; }
+.subtitle { opacity: 0.7; margin-bottom: 30px; }
+
+/* Cards layout */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media(max-width:500px){
+  .cards { grid-template-columns: 1fr; }
+}
+
+/* Card styling */
+.card {
+  height: 200px;
+  border-radius: 20px;
+  background-image: url('wrapping-paper-2.jpg');
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: background-image 0.4s ease;
+}
+
+/* Gift image inside card */
+.card .gift-image {
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+/* Gift icon centered */
+.card .gift-icon {
+  position: absolute;
+  font-size: 2.5rem;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Intro screen */
+.intro {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  background: var(--bg);
+  z-index: 50;
+}
+
+.intro h1 { font-size: 2.4rem; margin-bottom: 10px; }
+.intro p { opacity: 0.8; margin-bottom: 30px; }
+.intro button {
+  padding: 14px 28px;
+  border-radius: 40px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Voucher */
+.voucher {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+  z-index: 20;
+
+  /* hide completely until activated */
+  visibility: hidden;  /* <- add this */
+  opacity: 0;          /* <- add this */
+}
+
+.voucher.active {
+  transform: translateY(0);
+  visibility: visible; /* <- show when active */
+  opacity: 1;
+}
+
+.voucher-content {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.voucher-content h2 { color: var(--primary); margin-top: 0; }
+.voucher-content p { line-height: 1.6; }
+
+.voucher-image {
+  max-width: 250px;
+  max-height: 250px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+/* Back button */
+.back {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+canvas#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.left-align-text {
+  text-align: left;
+  display: inline-block;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text);
+  padding: 15px 20px;
+  margin-top: 40px;
+}
+
+/* Sticky bottom if content is short */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1 0 auto; /* take remaining space */
+}
+
+.footer {
+  flex-shrink: 0; /* don’t shrink, always at bottom */
+}

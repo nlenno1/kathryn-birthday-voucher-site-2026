@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kathryn’s Birthday Vouchers</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- INTRO SCREEN -->
+    <div class="intro" id="intro">
+      <div class="intro-content">
+        <h1>Happy Birthday Kathryn! 🎉</h1>
+        <p>
+          Here’s a little birthday surprise, just for you.<br />
+          May your day be full of laughter, joy, and the things you love
+          most.<br />
+          Tap below to reveal your gifts! 💖
+        </p>
+        <button onclick="enterSite()">Open Your Gifts</button>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container hidden">
+      <h1>Kathryn’s Birthday Vouchers</h1>
+      <div class="subtitle">Tap a gift to see what's inside!</div>
+
+      <div class="cards">
+        <!-- Gift 1 -->
+        <div class="card" id="gift1" onclick="openGift('gift1')">
+          <div class="gift-icon" id="icon-gift1">🎁</div>
+        </div>
+
+        <!-- Gift 2 -->
+        <div class="card" id="gift2" onclick="openGift('gift2')">
+          <div class="gift-icon" id="icon-gift2">🎁</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Voucher 1 -->
+    <div class="voucher" id="voucher1">
+      <button class="back" onclick="closeVoucher('gift1')">← Back</button>
+      <img
+        class="voucher-image"
+        src="pole-fitness.jpg"
+        alt="Pole Fitness Gift"
+      />
+      <div class="voucher-content">
+        <h2>Pole Fitness Classes</h2>
+        <p>
+          A voucher for pole fitness classes in Chertsey with Fay's Pole
+          Fitness.<br /><br />
+          Your official class code will arrive by email.<br /><br />
+          Hopefully you can make great use of these and get back into pole
+          fitness 💃
+        </p>
+      </div>
+    </div>
+
+    <!-- Voucher 2 -->
+    <div class="voucher" id="voucher2">
+      <button class="back" onclick="closeVoucher('gift2')">← Back</button>
+      <img class="voucher-image" src="veg-patch.jpg" alt="Veg Patch Gift" />
+      <div class="voucher-content">
+        <h2>Garden Veg Patch Project</h2>
+        <div class="details">
+          <p>This voucher entitles you to:</p>
+          🌱🌱🌱🌱🌱🌱🌱🌱🌱<br />
+          <p class="left-align-text">
+            • Full design & build of one vegetable patch<br />
+            • All materials funded<br />
+            • Labour provided by professional gardener Nick (when his hand is
+            better).<br />
+          </p>
+          🌱🌱🌱🌱🌱🌱🌱🌱🌱<br />
+          <p>
+            No expiry date.<br />
+            Fully redeemable when sunshine and motivation align.<br />
+            Let’s make something beautiful grow together!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2026 Made with ❤️ for Kathryn</p>
+    </footer>
+
+    <canvas id="confetti"></canvas>
+    <script src="script.js"></script>
+  </body>
+</html>
