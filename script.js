@@ -3,6 +3,19 @@ const giftImages = {
   gift2: "veg-patch.jpg"
 };
 
+// On page load, restore card states
+document.addEventListener("DOMContentLoaded", () => {
+  for (let id in giftImages) {
+    const state = sessionStorage.getItem(id); // "opened" or null
+    if (state === "opened") {
+      const card = document.getElementById(id);
+      card.style.backgroundImage = `url(${giftImages[id]})`;
+      const icon = document.getElementById("icon-" + id);
+      if (icon) icon.style.display = "none";
+    }
+  }
+});
+
 function enterSite() {
   document.getElementById("intro").classList.add("hidden");
   document.querySelector(".container").classList.remove("hidden");
@@ -18,6 +31,12 @@ function openGift(id) {
   // show voucher
   document.getElementById(voucherId).classList.add("active");
 
+  // lock background scroll
+  document.body.style.overflow = "hidden";
+
+  // mark as opened in session
+  sessionStorage.setItem(id, "opened");
+
   // confetti
   launchConfetti();
 }
@@ -25,6 +44,9 @@ function openGift(id) {
 function closeVoucher(id) {
   const voucherId = id === "gift1" ? "voucher1" : "voucher2";
   document.getElementById(voucherId).classList.remove("active");
+
+  // unlock background scroll
+  document.body.style.overflow = "";
 
   // set card background to present image (simulate opened)
   const card = document.getElementById(id);
